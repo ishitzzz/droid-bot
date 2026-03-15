@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Cyan robot head -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M38,42 L70,42 C73,42 75,44 75,47 L75,68 C75,71 73,73 70,73 L38,73 C35,73 33,71 33,68 L33,47 C33,44 35,42 38,42 Z" />
+
+    <!-- Eyes -->
+    <path
+        android:fillColor="#0A0E14"
+        android:pathData="M43,52 C43,50 45,48 47,48 C49,48 51,50 51,52 C51,54 49,56 47,56 C45,56 43,54 43,52 Z" />
+    <path
+        android:fillColor="#0A0E14"
+        android:pathData="M57,52 C57,50 59,48 61,48 C63,48 65,50 65,52 C65,54 63,56 61,56 C59,56 57,54 57,52 Z" />
+
+    <!-- Antenna -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M52,42 L52,35"
+        android:strokeWidth="3"
+        android:strokeColor="#00E5FF" />
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M52,33 C53.66,33 55,34.34 55,36 C55,37.66 53.66,39 52,39 C50.34,39 49,37.66 49,36 C49,34.34 50.34,33 52,33 Z" />
+
+    <!-- Mouth -->
+    <path
+        android:fillColor="#0A0E14"
+        android:pathData="M44,62 L64,62"
+        android:strokeWidth="2.5"
+        android:strokeColor="#0A0E14"
+        android:strokeLineCap="round" />
+</vector>

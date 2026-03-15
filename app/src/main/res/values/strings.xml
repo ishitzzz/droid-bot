@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DroidBot</string>
+    <string name="accessibility_service_description">DroidBot Agent — Autonomous navigation service that reads and interacts with screen content on your behalf.</string>
+</resources>

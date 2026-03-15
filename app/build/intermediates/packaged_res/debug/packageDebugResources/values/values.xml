@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#0A0E14</color>
+    <string name="accessibility_service_description">DroidBot Agent — Autonomous navigation service that reads and interacts with screen content on your behalf.</string>
+    <string name="app_name">DroidBot</string>
+    <style name="Theme.DroidBot" parent="android:Theme.Material.NoActionBar"/>
+</resources>
