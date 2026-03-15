@@ -23,18 +23,18 @@ This file acts as the universal memory and changelog for DroidBot.
 ### 🔄 Logic Flow Change:
 ```mermaid
 graph TD
-    A[VoiceCommandService] -->|Listens continuously via SpeechRecognizer| B(Wake word detected)
-    B -->|Transcribes text| C[Intent to MainActivity]
-    C -->|Starts AgentTask| D[NavigationBrain]
+    A[VoiceCommandService] -->|"Listens continuously via SpeechRecognizer"| B(Wake word detected)
+    B -->|"Transcribes text"| C[Intent to MainActivity]
+    C -->|"Starts AgentTask"| D[NavigationBrain]
     
     subgraph "Navigation Brain Execution"
-        D -->|Captures Screen| E[UITreeParser]
+        D -->|"Captures Screen"| E[UITreeParser]
         E --> F{Gemini 2.5 Flash}
         F -- Success --> G[ActionExecutor]
         F -- Failure/404/RateLimit --> H{Gemini 2.5 Flash Lite Fallback}
         H --> G
     end
-    G -->|Dispatches taps inside current app| I[Android OS]
+    G -->|"Dispatches taps inside current app"| I[Android OS]
 ```
 
 ---

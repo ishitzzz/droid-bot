@@ -10,25 +10,25 @@ DroidBot uses a **Reasoning + Action (ReAct)** loop powered by Gemini.
 
 ```mermaid
 graph TD
-    User((User Voice/Touch)) -->|Voice Command| Voice[VoiceCommandService]
-    Voice --> |Intent| App[MainActivity]
-    App -->|Starts Task| Brain[NavigationBrain]
+    User((User Voice/Touch)) -->|"Voice Command"| Voice[VoiceCommandService]
+    Voice --> |"Intent"| App[MainActivity]
+    App -->|"Starts Task"| Brain[NavigationBrain]
     
     subgraph "The Hand (System 1)"
-        Scanner[UITreeParser] -->|Compresses accessibility nodes| Brain
-        Brain -->|tap(nodeId), scroll(dir)| Executor[ActionExecutor]
-        Executor -->|Performs gesture| OS[Android OS]
+        Scanner[UITreeParser] -->|"Compresses accessibility nodes"| Brain
+        Brain -->|"tap(nodeId), scroll(dir)"| Executor[ActionExecutor]
+        Executor -->|"Performs gesture"| OS[Android OS]
     end
     
     subgraph "The Brain (System 2)"
-        Brain -->|Prompt + UI State| Cloud[CloudInference]
-        Cloud -->|JSON Action| Brain
+        Brain -->|"Prompt + UI State"| Cloud[CloudInference]
+        Cloud -->|"JSON Action"| Brain
     end
     
     subgraph "The Eye (Self-Healing Fallback)"
-        OS -->|Screenshot| Vision[SelfHealingEngine]
-        Vision -->|Image| Cloud
-        Cloud -->|x,y Coordinates| Executor
+        OS -->|"Screenshot"| Vision[SelfHealingEngine]
+        Vision -->|"Image"| Cloud
+        Cloud -->|"x,y Coordinates"| Executor
     end
 ```
 
@@ -68,15 +68,15 @@ Converting Android's heavyweight `AccessibilityNodeInfo` tree into a lightweight
 
 ```mermaid
 graph TD
-    A[Raw AccessibilityNodeInfo] --> B{Is Node Visible to User?}
+    A[Raw AccessibilityNodeInfo] --> B{"Is Node Visible to User?"}
     B -- No --> C[Discard Node]
-    B -- Yes --> D{Is Node Clickable / Editable / Scrollable?}
-    D -- No --> E{Does it have text content?}
+    B -- Yes --> D{"Is Node Clickable / Editable / Scrollable?"}
+    D -- No --> E{"Does it have text content?"}
     E -- No --> C
     E -- Yes --> F[Extract Text]
     D -- Yes --> F
     F --> G[Assign unique incrementing ID]
-    G --> H[Format as '[ID] Type: Text']
+    G --> H["Format as '[ID] Type: Text'"]
     H --> I[Append to prompt string]
 ```
 
@@ -85,11 +85,11 @@ How DroidBot captures commands while in the background.
 
 ```mermaid
 graph LR
-    A[VoiceCommandService] -->|Android SpeechRecognizer| B[Listening...]
-    B -->|onResult| C{Contains "Hey DroidBot"?}
+    A[VoiceCommandService] -->|"Android SpeechRecognizer"| B[Listening...]
+    B -->|onResult| C{"Contains 'Hey DroidBot'?"}
     C -- No --> B
     C -- Yes --> D[Extract remaining text]
-    D -->|Broadcast/Intent| E[MainActivity]
+    D -->|"Broadcast/Intent"| E[MainActivity]
     E --> F[Trigger NavigationBrain Task]
 ```
 

@@ -29,3 +29,8 @@ This document records the mistakes made by AI agents during modifications, the c
 - **Problem**: A standard `git add .` command included `local.properties` (which contained `GEMINI_API_KEY`) because the `.gitignore` was not formatted correctly.
 - **Challenge**: The project was not a Git repository initially, so the agent created `.gitignore` but didn't verify if it excluded the file properly before the initial commit.
 - **Workaround/Fix**: Urgently executed `git rm --cached local.properties`, fixed the `.gitignore` file using generic patterns, amended the commit via `git commit --amend`, and verified the Git index before final push.
+
+## 💥 Mistake: Mermaid Diagram Rendering Errors
+- **Problem**: Markdown diagrams showed a "Parse error" on GitHub due to unescaped special characters (e.g., `?`, `()`, `:`) within Mermaid node and edge labels.
+- **Challenge**: Mermaid is sensitive to punctuation inside node structures (e.g., `A[Some (text)]` or `A -->|Contains ?| B`).
+- **Workaround/Fix**: Replaced all unquoted labels containing punctuation with double-quoted strings (e.g., `A["Some (text)"]` and `A -->|"Contains ?"| B`). Future agents **must always wrap multi-word or punctuated Mermaid text labels in double quotes**.
